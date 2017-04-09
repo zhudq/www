@@ -1,6 +1,6 @@
 var path=require('path');
 
-var assetsRoot = path.resolve(__dirname,'./bin')
+var assetsRoot = path.resolve(__dirname,'../bin')
 module.exports={
 	entry: {
         main: './src/app.js'

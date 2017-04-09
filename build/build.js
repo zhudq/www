@@ -3,7 +3,7 @@ require('shelljs/global')
 
 var path=require('path');
 var webpack=require('webpack');
-var webpackconfig=require('./webpack.prod.config')
+var webpackconfig=require('./webpack.prod.conf')
 var ora=require('ora');
 
 var spinner=ora('building for production')
