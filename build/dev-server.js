@@ -3,8 +3,10 @@ var express=require('express')
 var webpack=require('webpack')
 var webpackConfig=require('./webpack.dev.conf')
 var opn = require('opn')
+var config = require('../config')
 
-var port=8877
+var port = process.env.PORT || config.dev.port
+if (!process.env.NODE_ENV) process.env.NODE_ENV = JSON.parse(config.dev.env.NODE_ENV)
 
 var server=express()
 var compiler=webpack(webpackConfig)

@@ -1,21 +1,23 @@
 // https://github.com/shelljs/shelljs
 require('shelljs/global')
+env.NODE_ENV = 'production'
 
-var path=require('path');
-var webpack=require('webpack');
-var webpackconfig=require('./webpack.prod.conf')
-var ora=require('ora');
+var path = require('path')
+var config = require('../config')
+var ora = require('ora')
+var webpack = require('webpack')
+var webpackConfig = require('./webpack.prod.conf')
 
-var spinner=ora('building for production')
-spinner.start();
+var spinner = ora('building for production...')
+spinner.start()
 
-var assetsPath=path.resolve(__dirname,'../bin')
-rm('-rf',assetsPath)
-mkdir('-p',assetsPath)
-//cp('-R', 'static/*', assetsPath)
+var assetsPath = path.join(config.build.assetsRoot, config.build.assetsSubDirectory)
+rm('-rf', assetsPath)
+mkdir('-p', assetsPath)
+cp('-R', 'static/*', assetsPath)
 
-webpack(webpackconfig,function (err,stats) {
-	spinner.stop()
+webpack(webpackConfig, function(err, stats) {
+    spinner.stop()
     if (err) throw err
     process.stdout.write(stats.toString({
         colors: true,
